@@ -3,6 +3,9 @@ from dao.PaisDao import PaisDao
 
 app =Flask (__name__)
 
+# flash requiere esta sentencia
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
 @app.route('/paises-index')
 def paises_index():
     paisDao = PaisDao()
@@ -30,7 +33,7 @@ def guardarPais():
     flash('Guardado exitoso', 'success')
     
     # redireccionar a la vista pais
-    return redirect(url_for('paises_index.html'))
+    return redirect(url_for('paises_index'))
 
 @app.route('/paises-editar/<id>')
 def paisesEditar(id):
@@ -49,7 +52,6 @@ def actualizarPais():
     # actualizar
     paisdao = PaisDao()
     paisdao.updatePais(id, descripcion.upper())
-
     return redirect(url_for('paises_index'))
 
 @app.route('/paises-eliminar/<id>')

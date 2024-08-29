@@ -32,9 +32,9 @@ class PaisDao:
             cur.close()
             con.close()
 
-    def getPaisesById(self, id):
+    def getPaisById(self, id):
 
-        paisesSQL = """
+        paisSQL = """
         SELECT id, descripcion
         FROM paises WHERE id=%s
         """
